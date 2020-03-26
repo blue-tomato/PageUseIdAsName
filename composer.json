@@ -1,0 +1,26 @@
+{
+    "name": "blue-tomato/page-use-id-as-name",
+    "type": "pw-module",
+    "description": "Overrides the name field (used for url) with the page-id and hides the field from the admin GUI",
+    "keywords": [ "processwire", "id", "name", "url"],
+    "homepage": "https://github.com/blue-tomato/PageUseIdAsName/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Blue Tomato",
+            "email": "developer@blue-tomato.com",
+            "homepage": "https://github.com/blue-tomato"
+        },
+        {
+            "name": "PageUseIdAsName Contributors",
+            "homepage": "https://github.com/blue-tomato/PageUseIdAsName/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "hari/pw-module": "~1.0"
+    },
+    "require-dev": {
+      "processwire/processwire": ">=3.0.148"
+    }
+}
