@@ -10,7 +10,7 @@ class PageUseIdAsName extends WireData implements Module, ConfigurableModule
         return array(
             'title' => 'PageUseIdAsName',
             'class' => 'PageUseIdAsName',
-            'version' => 101,
+            'version' => 110,
             'summary' => 'Overrides the name field (used for url) with the page-id and hides the field from the admin GUI',
             'singular' => true,
             'autoload' => true,
@@ -23,7 +23,7 @@ class PageUseIdAsName extends WireData implements Module, ConfigurableModule
 
     public function init()
     {
-        $this->pages->addHookBefore('save', $this, 'changePageName');
+        $this->pages->addHookAfter('added', $this, 'changePageName');
         $this->addHookAfter('AdminTheme::getExtraMarkup', $this, 'hideNameField');
     }
 
@@ -61,10 +61,17 @@ class PageUseIdAsName extends WireData implements Module, ConfigurableModule
                     } else {
                         $page->set("name.$language->id", $id);
                     }
+                    // activate language
+                    $page->set("status.$language->id", 1);
                 }
             } else {
                 $page->name = $id;
             }
+
+            $page->save([
+                "quiet" => true,
+				"noHooks" => true
+            ]);
         }
     }
 
