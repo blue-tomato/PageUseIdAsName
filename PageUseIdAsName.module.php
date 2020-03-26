@@ -41,7 +41,7 @@ class PageUseIdAsName extends WireData implements Module, ConfigurableModule
                     array_push($cssSelectors, ".ProcessPageEdit-template-$template->name .InputfieldPageName");
                 }
                 if(count($cssSelectors) > 0) {
-                    //$parts['head'] .= '<style type="text/css">' . implode(',', $cssSelectors) . ' { display: none; }</style>';
+                    $parts['head'] .= '<style type="text/css">' . implode(',', $cssSelectors) . ' { display: none; }</style>';
                 }
             }
         }
