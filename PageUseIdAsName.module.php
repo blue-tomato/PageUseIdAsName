@@ -32,14 +32,20 @@ class PageUseIdAsName extends WireData implements Module, ConfigurableModule
         $parts = $event->return;
         $fieldName = 'page_use_id_as_name_templates';
         $allowedTemplates = $this->get($fieldName);
-        $allowedTemplates = wire('templates')->find("id=" . implode('|', $allowedTemplates));
-        if ($allowedTemplates && $allowedTemplates->count() > 0) {
-            $cssSelectors = [];
-            foreach ($allowedTemplates as $template) {
-                array_push($cssSelectors, ".ProcessPageEdit-template-$template->name .InputfieldPageName");
+
+        if($allowedTemplates && !empty($allowedTemplates)) {
+            $allowedTemplates = wire('templates')->find("id=" . implode('|', $allowedTemplates));
+            if ($allowedTemplates && $allowedTemplates->count() > 0) {
+                $cssSelectors = [];
+                foreach ($allowedTemplates as $template) {
+                    array_push($cssSelectors, ".ProcessPageEdit-template-$template->name .InputfieldPageName");
+                }
+                if(count($cssSelectors) > 0) {
+                    $parts['head'] .= '<style type="text/css">' . implode(',', $cssSelectors) . ' { display: none; }</style>';
+                }
             }
-            $parts['head'] .= '<style type="text/css">' . implode(',', $cssSelectors) . ' { display: none; }</style>';
         }
+
         $event->return = $parts;
     }
 
