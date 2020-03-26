@@ -10,7 +10,7 @@ class PageUseIdAsName extends WireData implements Module, ConfigurableModule
         return array(
             'title' => 'PageUseIdAsName',
             'class' => 'PageUseIdAsName',
-            'version' => 100,
+            'version' => 101,
             'summary' => 'Overrides the name field (used for url) with the page-id and hides the field from the admin GUI',
             'singular' => true,
             'autoload' => true,
