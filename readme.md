@@ -11,7 +11,7 @@ This Module for [ProcessWire CMS/CMF](http://processwire.com/) will replace your
 1. Execute the following command in the root directory of your ProcessWire installation:
 
 ```bash
-composer require blue-tomato/blue-tomato/page-use-id-as-name
+composer require blue-tomato/page-use-id-as-name
 ```
 
 2. ProcessWire will detect the module and list it in the backend's `Modules` > `Site` > `ProcessLogstash` section. Navigate there and install it.
