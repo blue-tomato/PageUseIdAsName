@@ -3,8 +3,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![ProcessWire 3](https://img.shields.io/badge/ProcessWire-3.x-orange.svg)](https://github.com/processwire/processwire)
 
-This Module for [ProcessWire CMS/CMF](http://processwire.com/) will replace your `$page-name` with `$page->id` so you have pages like
-`http://www.youdomain.com/parent-page/3463/`
+This Module for [ProcessWire CMS/CMF](http://processwire.com/) will replace your `$page->name` with `$page->id` so you have pages like
+`http://www.your-domain.com/parent-page/3463/`
 
 ## Installation
 
