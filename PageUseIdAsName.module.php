@@ -10,7 +10,7 @@ class PageUseIdAsName extends WireData implements Module, ConfigurableModule
         return array(
             'title' => 'PageUseIdAsName',
             'class' => 'PageUseIdAsName',
-            'version' => 111,
+            'version' => 112,
             'summary' => 'Overrides the name field (used for url) with the page-id and hides the field from the admin GUI',
             'singular' => true,
             'autoload' => true,
@@ -54,15 +54,19 @@ class PageUseIdAsName extends WireData implements Module, ConfigurableModule
         $page = $event->arguments[0];
         if ($this->isAllowedTemplate($page->template)) {
             $id = wire('sanitizer')->pageName($page->id);
-            foreach (wire('languages') as $language) {
-                if ($language->isDefault()) {
-                    $page->name = $id;
-                } else {
-                    // activate language
-                    $page->set("status$language->id", 1);
-                    // set pageid
-                    $page->set("name$language->id", $id);
+            if (wire('languages')) {
+                foreach (wire('languages') as $language) {
+                    if ($language->isDefault()) {
+                        $page->name = $id;
+                    } else {
+                        // activate language
+                        $page->set("status$language->id", 1);
+                        // set pageid
+                        $page->set("name$language->id", $id);
+                    }
                 }
+            } else {
+                $page->name = $id;
             }
             $page->save([
                 "quiet" => true,
