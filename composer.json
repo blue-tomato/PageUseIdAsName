@@ -1,6 +1,9 @@
 {
     "name": "blue-tomato/page-use-id-as-name",
-    "type": "pw-module",
+    "type": "processwire-module",
+    "extra": {
+        "installer-name": "PageUseIdAsName"
+    },
     "description": "Overrides the name field (used for url) with the page-id and hides the field from the admin GUI",
     "keywords": [ "processwire", "id", "name", "url"],
     "homepage": "https://github.com/blue-tomato/PageUseIdAsName/",
@@ -18,6 +21,6 @@
     ],
     "require": {
         "php": ">=7.0",
-        "hari/pw-module": "~1.0"
+        "composer/installers": "~1.0"
     }
 }
