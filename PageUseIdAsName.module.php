@@ -15,7 +15,7 @@ class PageUseIdAsName extends WireData implements Module, ConfigurableModule
             'singular' => true,
             'autoload' => 'template=admin',
             'requires' => [
-                'PHP>=7.0.0',
+                'PHP>=7.4.0 || ^8.0',
                 'ProcessWire>=3.0.148'
             ]
         );
@@ -91,7 +91,7 @@ class PageUseIdAsName extends WireData implements Module, ConfigurableModule
         $field->label = __('Templates');
         $field->description = __('Choose for which templates the rule should be applied.');
         $field->attr('name', $fieldName);
-        $field->attr('value', isset($data[$fieldName]) ? $data[$fieldName] : null);
+        $field->attr('value', $data[$fieldName] ?? null);
         $field->addOptions($templates);
         $wrapper->append($field);
 
@@ -102,6 +102,6 @@ class PageUseIdAsName extends WireData implements Module, ConfigurableModule
     {
         $fieldName = 'page_use_id_as_name_templates';
         $allowedTemplates = $this->get($fieldName);
-        return in_array($template->id, $allowedTemplates);
+        return is_array($allowedTemplates) && in_array($template->id, $allowedTemplates);
     }
 }
